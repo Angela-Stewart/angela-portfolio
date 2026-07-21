@@ -3,22 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Portfolio of Your Name — projects, skills, and contact info." />
-
-  <!-- Favicon (replace with your own in assets/icons) -->
-  <link rel="icon" href="assets/icons/favicon.ico" />
+  <title>Angela Stewart — UX/UI Designer</title>
+  <meta name="description" content="Angela Stewart is a UX/UI designer with a background in interior design, creating intuitive digital experiences through research and design." />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <nav class="navbar">
-      <a href="#top" class="logo">Your Name</a>
+      <a href="#top" class="logo">Angela Stewart</a>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -27,83 +23,132 @@
 
   <main id="top">
 
-    <section id="hero" class="hero">
-      <h1>Hi, I'm <span class="highlight">Your Name</span></h1>
-      <p class="subtitle">Web Developer &mdash; building clean, functional, and user-friendly websites.</p>
-      <a href="#projects" class="btn">View My Work</a>
-    </section>
-
-    <section id="about" class="section">
-      <h2>About Me</h2>
-      <p>
-        A short paragraph about who you are, what you do, and what you're
-        passionate about. Mention your background, interests, and what
-        makes you unique as a developer or designer.
+    <section id="hero" class="hero reveal">
+      <img
+        src="assets/images/profile/angela-headshot.jpg"
+        alt="Portrait of Angela Stewart"
+        class="hero-photo"
+        width="176"
+        height="176"
+      />
+      <p class="hero-kicker">UX/UI Designer</p>
+      <h1>Hi, I&rsquo;m Angela.</h1>
+      <p class="hero-bio">
+        I'm a UX/UI designer with a background in interior design and
+        client-facing project work, where I learned to uncover goals,
+        organize complex information, and turn it into clear solutions.
+        I apply that same approach to digital products through research
+        and design, creating intuitive experiences that improve clarity
+        and support informed decision-making.
       </p>
+      <a href="#work" class="btn">View My Work</a>
     </section>
 
-    <section id="projects" class="section">
-      <h2>Projects</h2>
-      <div class="project-grid">
+    <section id="work" class="section work reveal">
+      <h2>My projects</h2>
 
-        <article class="project-card">
-          <img src="assets/images/project-placeholder.jpg" alt="Project 1 screenshot" />
-          <h3>Project Title</h3>
-          <p>Short description of the project, tools used, and your role.</p>
-          <div class="project-links">
-            <a href="#" target="_blank" rel="noopener">Live Demo</a>
-            <a href="#" target="_blank" rel="noopener">Source Code</a>
-          </div>
-        </article>
+      <div class="project-row">
+        <div class="project-visual project-visual--bluegrass" aria-hidden="true">
+          <span class="project-visual-mark">VB</span>
+        </div>
+        <div class="project-copy">
+          <h3>Virginia Bluegrass</h3>
+          <p class="project-subtitle">Mobile Ticketing App</p>
+          <span class="project-status">Case study coming soon</span>
+        </div>
+      </div>
 
-        <article class="project-card">
-          <img src="assets/images/project-placeholder.jpg" alt="Project 2 screenshot" />
-          <h3>Project Title</h3>
-          <p>Short description of the project, tools used, and your role.</p>
-          <div class="project-links">
-            <a href="#" target="_blank" rel="noopener">Live Demo</a>
-            <a href="#" target="_blank" rel="noopener">Source Code</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <img src="assets/images/project-placeholder.jpg" alt="Project 3 screenshot" />
-          <h3>Project Title</h3>
-          <p>Short description of the project, tools used, and your role.</p>
-          <div class="project-links">
-            <a href="#" target="_blank" rel="noopener">Live Demo</a>
-            <a href="#" target="_blank" rel="noopener">Source Code</a>
-          </div>
-        </article>
-
+      <div class="project-row project-row--reverse">
+        <div class="project-visual project-visual--pawsconnect" aria-hidden="true">
+          <span class="project-visual-mark">PC</span>
+        </div>
+        <div class="project-copy">
+          <h3>PawsConnect</h3>
+          <p class="project-subtitle">Mobile Pet Adoption &amp; Care Platform</p>
+          <span class="project-status">Case study coming soon</span>
+        </div>
       </div>
     </section>
 
-    <section id="skills" class="section">
+    <section id="skills" class="section skills reveal">
       <h2>Skills</h2>
-      <ul class="skills-list">
-        <li>HTML5 &amp; CSS3</li>
-        <li>JavaScript</li>
-        <li>Git &amp; GitHub</li>
-        <li>Responsive Design</li>
-        <li>Add your own skills here</li>
-      </ul>
+      <div class="skills-grid">
+        <div class="skills-group">
+          <h3>UX/UI Design</h3>
+          <ul>
+            <li>User research</li>
+            <li>Usability testing</li>
+            <li>Information architecture</li>
+            <li>Interaction design</li>
+            <li>Wireframing</li>
+            <li>Prototyping</li>
+            <li>User flows</li>
+            <li>Accessibility</li>
+          </ul>
+        </div>
+        <div class="skills-group">
+          <h3>Visual Design</h3>
+          <ul>
+            <li>Typography</li>
+            <li>Color theory</li>
+            <li>Visual hierarchy</li>
+            <li>Layout</li>
+            <li>Branding</li>
+          </ul>
+        </div>
+        <div class="skills-group">
+          <h3>Tools</h3>
+          <ul>
+            <li>Figma</li>
+            <li>Adobe Creative Suite</li>
+            <li>VS Code</li>
+            <li>GitHub</li>
+            <li>AI-assisted workflows (ChatGPT, Claude)</li>
+          </ul>
+        </div>
+        <div class="skills-group">
+          <h3>Front-End</h3>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Hand-coded web pages</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="credentials" class="section credentials reveal">
+      <div class="credentials-row">
+        <h3>Resume</h3>
+        <a
+          href="assets/documents/resume/Angela_Stewart_UX_UI_Designer_Resume.pdf"
+          class="btn btn-secondary"
+          target="_blank"
+          rel="noopener"
+        >
+          Download Resume
+        </a>
+      </div>
+      <div class="credentials-row">
+        <h3>Education</h3>
+        <p>B.S. User Experience Design &mdash; Western Governors University, Graduated 2026</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact reveal">
       <h2>Contact</h2>
-      <p>Interested in working together or just want to say hi?</p>
+      <a href="mailto:angelavstewart@outlook.com" class="btn">Email &rarr;</a>
       <ul class="contact-links">
-        <li><a href="mailto:you@example.com">you@example.com</a></li>
-        <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="tel:+15419930423">Call &rarr;</a></li>
+        <li><a href="https://www.linkedin.com/in/angela-stewart3/" target="_blank" rel="noopener">LinkedIn &rarr;</a></li>
+        <li><a href="https://github.com/Angela-Stewart" target="_blank" rel="noopener">GitHub &rarr;</a></li>
       </ul>
     </section>
 
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Angela Stewart. All rights reserved.</p>
   </footer>
 
   <script src="js/script.js"></script>

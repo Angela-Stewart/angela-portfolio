@@ -2,19 +2,19 @@
    Variables
    ========================================================================== */
 :root {
-  --color-bg: #ffffff;
-  --color-text: #1a1a1a;
-  --color-muted: #5a5a5a;
-  --color-accent: #2563eb;
-  --color-accent-dark: #1d4ed8;
-  --color-border: #e5e5e5;
-  --color-card-bg: #f9f9f9;
+  --color-bg: #fbfaf8;
+  --color-surface: #f3f0eb;
+  --color-ink: #15130f;
+  --color-muted: #6b6560;
+  --color-accent: #b5502f;
+  --color-accent-dark: #96401f;
+  --color-border: #e8e3dc;
 
-  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: "Segoe UI", Roboto, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
 
-  --max-width: 1000px;
-  --radius: 8px;
+  --max-width: 1120px;
+  --measure: 62ch;
+  --radius: 10px;
   --transition: 0.2s ease;
 }
 
@@ -28,9 +28,10 @@
 body {
   margin: 0;
   font-family: var(--font-body);
-  color: var(--color-text);
+  color: var(--color-ink);
   background: var(--color-bg);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -60,30 +61,43 @@ ul {
   padding: 0;
 }
 
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
 /* ==========================================================================
    Layout helpers
    ========================================================================== */
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 6rem 1.5rem;
 }
 
 /* ==========================================================================
    Header / Nav
    ========================================================================== */
 .site-header {
-  border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
-  background: var(--color-bg);
   z-index: 10;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.site-header.scrolled {
+  background: rgba(251, 250, 248, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom-color: var(--color-border);
 }
 
 .navbar {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -91,18 +105,24 @@ ul {
 
 .logo {
   font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--color-text);
+  font-size: 1rem;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .nav-links a {
-  color: var(--color-text);
+  color: var(--color-ink);
   font-size: 0.95rem;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--color-accent);
 }
 
 /* ==========================================================================
@@ -111,31 +131,45 @@ ul {
 .hero {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 6rem 1.5rem 4rem;
+  padding: 5rem 1.5rem 6rem;
   text-align: left;
 }
 
-.hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin: 0 0 1rem;
+.hero-photo {
+  width: clamp(6rem, 13vw, 11rem);
+  height: clamp(6rem, 13vw, 11rem);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 0 6px var(--color-surface);
 }
 
-.highlight {
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--color-accent);
+  margin: 0 0 0.5rem;
 }
 
-.subtitle {
+.hero h1 {
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
+  margin: 0 0 1.25rem;
+}
+
+.hero-bio {
   color: var(--color-muted);
-  font-size: 1.2rem;
-  margin: 0 0 2rem;
-  max-width: 40ch;
+  font-size: 1.15rem;
+  max-width: var(--measure);
+  margin: 0 0 2.5rem;
 }
 
 .btn {
   display: inline-block;
   background: var(--color-accent);
   color: #fff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.75rem;
   border-radius: var(--radius);
   font-weight: 600;
   transition: background var(--transition);
@@ -147,80 +181,174 @@ ul {
   color: #fff;
 }
 
-/* ==========================================================================
-   Projects
-   ========================================================================== */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.project-card {
-  background: var(--color-card-bg);
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  overflow: hidden;
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+/* ==========================================================================
+   Work
+   ========================================================================== */
+.work h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 3.5rem;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.project-row + .project-row {
+  margin-top: 5rem;
+}
+
+.project-row--reverse .project-visual {
+  order: 2;
+}
+
+.project-row--reverse .project-copy {
+  order: 1;
+}
+
+.project-visual {
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.project-card img {
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  background: var(--color-border);
+.project-visual-mark {
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -0.02em;
 }
 
-.project-card h3,
-.project-card p,
-.project-card .project-links {
-  padding: 0 1rem;
+.project-visual--bluegrass {
+  background: linear-gradient(135deg, #2f4b3c, #4c7359);
 }
 
-.project-card h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.25rem;
+.project-visual--pawsconnect {
+  background: linear-gradient(135deg, #96401f, #d98551);
 }
 
-.project-card p {
-  color: var(--color-muted);
+.project-copy h3 {
+  font-size: 1.75rem;
   margin-bottom: 0.5rem;
 }
 
-.project-links {
-  display: flex;
-  gap: 1rem;
-  padding-bottom: 1rem;
-  font-size: 0.9rem;
+.project-subtitle {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  margin: 0 0 1.25rem;
+}
+
+.project-status {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
 }
 
 /* ==========================================================================
    Skills
    ========================================================================== */
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+.skills h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 3rem;
 }
 
-.skills-list li {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  padding: 0.4rem 1rem;
-  font-size: 0.9rem;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 4rem;
+}
+
+.skills-group h3 {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.skills-group ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.skills-group li {
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   Credentials (Resume / Education)
+   ========================================================================== */
+.credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  border-top: 1px solid var(--color-border);
+  padding: 4rem 1.5rem;
+}
+
+.credentials-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.credentials-row h3 {
+  font-size: 1.05rem;
+}
+
+.credentials-row p {
+  color: var(--color-muted);
+  margin: 0;
 }
 
 /* ==========================================================================
    Contact
    ========================================================================== */
+.contact {
+  border-top: 1px solid var(--color-border);
+}
+
+.contact h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 2rem;
+}
+
 .contact-links {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: 2rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
+}
+
+.contact-links a {
+  color: var(--color-ink);
+  font-size: 1rem;
+}
+
+.contact-links a:hover,
+.contact-links a:focus-visible {
+  color: var(--color-accent);
 }
 
 /* ==========================================================================
@@ -229,14 +357,58 @@ ul {
 .site-footer {
   border-top: 1px solid var(--color-border);
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   color: var(--color-muted);
   font-size: 0.9rem;
 }
 
 /* ==========================================================================
+   Reveal-on-scroll
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
+@media (max-width: 720px) {
+  .project-row {
+    grid-template-columns: 1fr;
+  }
+
+  .project-row--reverse .project-visual,
+  .project-row--reverse .project-copy {
+    order: initial;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .credentials-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
 @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
@@ -245,7 +417,7 @@ ul {
   }
 
   .nav-links {
-    gap: 1rem;
+    gap: 1.25rem;
     flex-wrap: wrap;
   }
 }
